@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>868173664084-0n1fuirkh93j7muotbf24a7lhtmfhb05.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.868173664084-0n1fuirkh93j7muotbf24a7lhtmfhb05</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>868173664084-bprr6agtm7b4tqsqbo7nrjg0b2qm55bj.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyABY61uWsMyL6vKWocvSu0MjpvCFcZoUrU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>868173664084</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.youmechat.youMe</string>
+	<key>PROJECT_ID</key>
+	<string>youme-cf830</string>
+	<key>STORAGE_BUCKET</key>
+	<string>youme-cf830.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:868173664084:ios:7098f91b09b2df930302c1</string>
+</dict>
+</plist>

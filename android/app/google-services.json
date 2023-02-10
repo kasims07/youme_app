@@ -37,6 +37,13 @@
             {
               "client_id": "868173664084-jdbd3sjut0hficai5fcdj4food3hi6pf.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "868173664084-0n1fuirkh93j7muotbf24a7lhtmfhb05.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.youmechat.youMe"
+              }
             }
           ]
         }
