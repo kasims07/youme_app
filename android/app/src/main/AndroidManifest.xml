@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.youmechat.you_me">
+    package="com.app.youmechat">
    <application
         android:label="you_me"
         android:name="${applicationName}"

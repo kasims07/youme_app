@@ -1,4 +1,4 @@
-package com.app.youmechat.you_me
+package com.app.youmechat
 
 import io.flutter.embedding.android.FlutterActivity
 
