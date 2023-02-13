@@ -11,8 +11,8 @@ import 'package:you_me/features/auth/screen/user_information_screen.dart';
 import 'package:you_me/models/user_model.dart';
 import 'package:you_me/screens/mobile_layout_screen.dart';
 
-final authrepositoryProvider =
-    Provider((ref) => AuthRepository(auth: FirebaseAuth.instance, fireStore: FirebaseFirestore.instance));
+final authrepositoryProvider = Provider((ref) => AuthRepository(
+    auth: FirebaseAuth.instance, fireStore: FirebaseFirestore.instance));
 
 class AuthRepository {
   final FirebaseAuth auth;
@@ -21,6 +21,16 @@ class AuthRepository {
     required this.auth,
     required this.fireStore,
   });
+
+  Future<UserModel?> getCurrentUserData() async {
+    var userData =
+        await fireStore.collection('users').doc(auth.currentUser?.uid).get();
+    UserModel? user;
+    if (userData.data() != null) {
+      user = UserModel.fromMap(userData.data()!);
+    }
+    return user;
+  }
 
   void SignInWithPhoneNumber(BuildContext context, String phoneNumber) async {
     try {
@@ -33,7 +43,8 @@ class AuthRepository {
             throw Exception(e.message);
           },
           codeSent: ((String verificationId, int? resendToken) async {
-            Navigator.pushNamed(context, OTPScreen.routeName, arguments: verificationId);
+            Navigator.pushNamed(context, OTPScreen.routeName,
+                arguments: verificationId);
           }),
           codeAutoRetrievalTimeout: (String verificationId) {});
     } on FirebaseAuthException catch (e) {
@@ -47,9 +58,11 @@ class AuthRepository {
     required String OTP,
   }) async {
     try {
-      PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: OTP);
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId, smsCode: OTP);
       await auth.signInWithCredential(credential);
-      Navigator.pushNamedAndRemoveUntil(context, UserInformationScreen.routeName, (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, UserInformationScreen.routeName, (route) => false);
     } on FirebaseAuthException catch (e) {
       showSnackBar(context: context, content: e.message!);
     }
@@ -66,13 +79,22 @@ class AuthRepository {
       String photoUrl =
           'https://png.pngitem.com/pimgs/s/649-6490124_katie-notopoulos-katienotopoulos-i-write-about-tech-round.png';
       if (profilePic != null) {
-        photoUrl = await ref.read(commonFirebaseStorageRepositoryProvider).storeFileToFirebase('profilePic/$uid', profilePic);
+        photoUrl = await ref
+            .read(commonFirebaseStorageRepositoryProvider)
+            .storeFileToFirebase('profilePic/$uid', profilePic);
       }
-      var user =
-          UserModel(name: name, uid: uid, profilePic: photoUrl, isOnline: true, phoneNumber: auth.currentUser!.uid, groupId: []);
+      var user = UserModel(
+          name: name,
+          uid: uid,
+          profilePic: photoUrl,
+          isOnline: true,
+          phoneNumber: auth.currentUser!.phoneNumber!,
+          groupId: []);
       await fireStore.collection('users').doc(uid).set(user.toMap());
       Navigator.pushAndRemoveUntil(
-          context, MaterialPageRoute(builder: (context) => const MobileLayoutScreen()), (route) => false);
+          context,
+          MaterialPageRoute(builder: (context) => const MobileLayoutScreen()),
+          (route) => false);
     } catch (e) {
       showSnackBar(context: context, content: e.toString());
     }

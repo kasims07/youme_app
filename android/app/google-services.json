@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "868173664084-3lst6g5aemu4jo1rb8tnli4ja392ugi7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.youmechat",
+            "certificate_hash": "03c0565dc17ac190e09a6edcc6ab18808449ee60"
+          }
+        },
+        {
           "client_id": "868173664084-bprr6agtm7b4tqsqbo7nrjg0b2qm55bj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
