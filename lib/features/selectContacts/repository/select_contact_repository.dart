@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:you_me/common/utils/utils.dart';
+import 'package:you_me/features/chat/screen/mobile_chat_screen.dart';
 import 'package:you_me/models/user_model.dart';
 
 final selectContactRepositoryProvider = Provider((ref) =>
@@ -34,6 +35,10 @@ class SelectContactRepository {
             selectedContact.phones[0].number.replaceAll(' ', '');
         if (selectPhone == userData.phoneNumber) {
           isFound = true;
+          Navigator.pushNamed(context, MobileChatScreen.routeName, arguments: {
+            'name': userData.name,
+            'uid': userData.uid,
+          });
         }
       }
       if (!isFound) {

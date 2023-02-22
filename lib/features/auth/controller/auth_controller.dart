@@ -31,10 +31,16 @@ class AuthController {
   }
 
   void VerifyOTP(BuildContext context, String verificationId, String OTP) {
-    authRepository.verifiyOTP(context: context, verificationId: verificationId, OTP: OTP);
+    authRepository.verifiyOTP(
+        context: context, verificationId: verificationId, OTP: OTP);
   }
 
   void saveUserDataToFirebase(BuildContext context, String name, File? file) {
-    authRepository.StoreUserDataToFirebase(context: context, ref: ref, name: name, profilePic: file);
+    authRepository.StoreUserDataToFirebase(
+        context: context, ref: ref, name: name, profilePic: file);
+  }
+
+  Stream<UserModel> userDatabyId(String userId) {
+    return authRepository.userData(userId);
   }
 }
