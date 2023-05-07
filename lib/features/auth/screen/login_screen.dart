@@ -38,7 +38,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void sendPhoneNumber() {
     String phoneNumber = phoneController.text.trim();
     if (country != null && phoneNumber.isNotEmpty) {
-      ref.read(authControllerProvider).SignInPhone(context, '+${country!.phoneCode}$phoneNumber');
+      ref
+          .read(authControllerProvider)
+          .SignInPhone(context, '+${country!.phoneCode}$phoneNumber');
     } else {
       showSnackBar(context: context, content: 'Fill all the fields');
     }
