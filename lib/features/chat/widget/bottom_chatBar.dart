@@ -17,11 +17,16 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   final TextEditingController _messageController = TextEditingController();
 
   void sendTextMessage() async {
+    print('CLICK');
     if (isShowSend) {
+      print('IS SHOW');
       ref
           .read(chatControllProvider)
           .sendTextMessage(context, _messageController.text, widget.reciverId);
     }
+    setState(() {
+      _messageController.text = '';
+    });
   }
 
   @override

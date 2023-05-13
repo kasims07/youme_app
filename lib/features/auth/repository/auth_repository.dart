@@ -29,6 +29,7 @@ class AuthRepository {
     if (userData.data() != null) {
       user = UserModel.fromMap(userData.data()!);
     }
+    print('USER DATA GET ${user!.name}');
     return user;
   }
 

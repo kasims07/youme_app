@@ -5,8 +5,8 @@ import 'package:you_me/features/auth/controller/auth_controller.dart';
 
 import '../../../colors.dart';
 import '../../../models/user_model.dart';
-import '../../../widgets/chat_list.dart';
 import '../widget/bottom_chatBar.dart';
+import '../widget/chat_list.dart';
 
 class MobileChatScreen extends ConsumerWidget {
   static const String routeName = '/mobile-chatScreen';
