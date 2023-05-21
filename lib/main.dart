@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:you_me/common/widgets/error.dart';
-import 'package:you_me/common/widgets/loader.dart';
-import 'package:you_me/features/auth/controller/auth_controller.dart';
 import 'package:you_me/firebase_options.dart';
 import 'package:you_me/router.dart';
 import 'package:you_me/screens/mobile_layout_screen.dart';
 
 import 'colors.dart';
+import 'common/widgets/error.dart';
+import 'common/widgets/loader.dart';
+import 'features/auth/controller/auth_controller.dart';
 import 'features/landing/screens/landing_screen.dart';
 
 void main() async {
@@ -31,14 +31,17 @@ class MyApp extends ConsumerWidget {
         scaffoldBackgroundColor: backgroundColor,
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: ref.watch(userDataAuthProvider).when(data: (user){
-        if(user == null){
-          return const LandingScreen();
-        }
-        return const MobileLayoutScreen();
-      }, error: (err, StackTrace){
-        return ErrorScreen(error: err.toString());
-      }, loading: () => const Loader()),
+      home: ref.watch(userDataAuthProvider).when(
+          data: (user) {
+            if (user == null) {
+              return const LandingScreen();
+            }
+            return const MobileLayoutScreen();
+          },
+          error: (err, track) {
+            return ErrorScreen(error: err.toString());
+          },
+          loading: () => const Loader()),
     );
   }
 }

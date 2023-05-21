@@ -23,13 +23,16 @@ class AuthRepository {
   });
 
   Future<UserModel?> getCurrentUserData() async {
+    print('DATA GETTING');
+    UserModel? user;
+
     var userData =
         await fireStore.collection('users').doc(auth.currentUser?.uid).get();
-    UserModel? user;
+    print('Hii');
     if (userData.data() != null) {
       user = UserModel.fromMap(userData.data()!);
     }
-    print('USER DATA GET ${user!.name}');
+
     return user;
   }
 
@@ -107,5 +110,12 @@ class AuthRepository {
             event.data()!,
           ),
         );
+  }
+
+  void setStatus(bool isOnline) async {
+    await fireStore
+        .collection('users')
+        .doc(auth.currentUser?.uid)
+        .update({'isOnline': isOnline});
   }
 }

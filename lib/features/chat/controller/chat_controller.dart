@@ -4,6 +4,8 @@ import 'package:you_me/features/auth/controller/auth_controller.dart';
 import 'package:you_me/features/chat/repository/chat_repository.dart';
 import 'package:you_me/models/chat_contact.dart';
 
+import '../../../models/message.dart';
+
 final chatControllProvider = Provider((ref) {
   final chatRepository = ref.watch(chatRepositoryProvider);
   return ChatController(chatRepository: chatRepository, ref: ref);
@@ -16,6 +18,10 @@ class ChatController {
 
   Stream<List<ChatContact>> getChatContacts() {
     return chatRepository.getChatContact();
+  }
+
+  Stream<List<Message>> getMessages(String reciverUserId) {
+    return chatRepository.getChatStream(reciverUserId);
   }
 
   void sendTextMessage(
